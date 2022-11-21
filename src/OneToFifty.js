@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Board from "./Board";
 import Timer from "./Timer";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+
 import "./OneToFifty.css";
 
 let array = [];
@@ -14,6 +16,8 @@ function OneToFifty() {
   const [gameFlag, setGameFlag] = useState(false);
   const [current, setCurrent] = useState(1);
   const [trys, setTrys] = useState(0);
+  const [gameCount, setGameCount] = useState(1);
+
   const handleClick = (num) => {
     setTrys(trys + 1);
     if (num === current && gameFlag) {
@@ -30,11 +34,18 @@ function OneToFifty() {
       setCurrent((current) => current + 1);
     }
   };
+  const navigate = useNavigate();
   const startGame = () => {
-    setNumbers(shuffleArray(array));
-    setCurrent(1);
-    setGameFlag(true);
+    if (gameCount > 0) {
+      setGameCount(gameCount - 1);
+      setNumbers(shuffleArray(array));
+      setCurrent(1);
+      setGameFlag(true);
+    } else {
+      alert("다음페이지 이동하세요", navigate("/Test"));
+    }
   };
+
   const endGame = () => {
     setGameFlag(false);
   };

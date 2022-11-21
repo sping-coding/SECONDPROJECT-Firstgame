@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import { Navigate } from "react-router-dom";
 
 function Timer() {
   const [timeElapsed, setTimeElapsed] = useState(0);
+
   const record = useRef();
   record.current = timeElapsed;
   useEffect(() => {
@@ -10,10 +12,11 @@ function Timer() {
       setTimeElapsed((timeElapsed) => timeElapsed + 30);
     }, 30);
     return () => {
-      alert("Your Record :" + record.current / 1000);
-      clearInterval(timer);
+      // alert("Your Record :" + record.current / 1000);
+      // clearInterval(timer);
     };
   }, []);
+
   return (
     <Container>
       <Front>{Math.floor(timeElapsed / 1000)}:</Front>
