@@ -16,6 +16,7 @@ const Container = styled.div`
   align-items: center;
   font-size: 50px;
   font-weight: 800;
+  background: white;
 `;
 
 export default Cell;

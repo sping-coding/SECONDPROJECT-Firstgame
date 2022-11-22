@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { Navigate } from "react-router-dom";
 
 function Timer() {
   const [timeElapsed, setTimeElapsed] = useState(0);

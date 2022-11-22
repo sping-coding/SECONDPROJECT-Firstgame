@@ -57,11 +57,20 @@ function OneToFifty() {
       <Container>
         <Board numbers={numbers} handleClick={handleClick}></Board>
         {gameFlag ? (
-          <Timer />
+          <div>
+            <Timer />
+            <div className="gameCounts">
+              <h2>시행횟수 : </h2>
+              <h2>{trys}</h2>
+            </div>
+          </div>
         ) : (
           <div>
             <StartButton onClick={startGame}>start</StartButton>
-            <h1>{trys}</h1>
+            <div className="gameCounts">
+              <h2>시행횟수 : </h2>
+              <h2>{trys}</h2>
+            </div>
           </div>
         )}
       </Container>
@@ -80,11 +89,12 @@ const shuffleArray = (array) => {
 const Container = styled.div`
   width: 600px;
   height: 800px;
-  border: 1px solid black;
+  border: 3px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: lightgray;
 `;
 
 const StartButton = styled.button`
