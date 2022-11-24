@@ -10,13 +10,14 @@ function Cell({ num, handleClick }) {
 }
 
 const Container = styled.div`
-  border: 3px solid blue;
+  border: 3px solid lightgrey;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 50px;
   font-weight: 800;
   background: white;
+  caret-color: white;
 `;
 
 export default Cell;

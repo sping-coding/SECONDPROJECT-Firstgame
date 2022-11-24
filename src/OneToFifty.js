@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Board from "./Board";
 import Timer from "./Timer";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import StartButton from "./StartButton.png";
 
 import "./OneToFifty.css";
 
@@ -34,6 +35,7 @@ function OneToFifty() {
       setCurrent((current) => current + 1);
     }
   };
+
   const navigate = useNavigate();
   const startGame = () => {
     if (gameCount > 0) {
@@ -42,7 +44,8 @@ function OneToFifty() {
       setCurrent(1);
       setGameFlag(true);
     } else {
-      alert("다음페이지 이동하세요", navigate("/Test"));
+      navigate("/test");
+      sessionStorage.setItem("firstGametimeclick", trys);
     }
   };
 
@@ -65,12 +68,12 @@ function OneToFifty() {
             </div>
           </div>
         ) : (
-          <div>
-            <StartButton onClick={startGame}>start</StartButton>
-            <div className="gameCounts">
-              <h2>시행횟수 : </h2>
-              <h2>{trys}</h2>
-            </div>
+          <div className="startButtonContainer">
+            <img
+              src={StartButton}
+              onClick={startGame}
+              className="StartButton"
+            />
           </div>
         )}
       </Container>
@@ -89,18 +92,13 @@ const shuffleArray = (array) => {
 const Container = styled.div`
   width: 600px;
   height: 800px;
-  border: 3px solid blue;
+  border: 3px solid lightgrey;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: lightgray;
-`;
-
-const StartButton = styled.button`
-  margin-top: 30px;
-  width: 100px;
-  height: 50px;
+  background: #52d2c4;
+  border-radius: 20px;
 `;
 
 export default OneToFifty;

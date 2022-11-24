@@ -16,6 +16,8 @@ function Timer() {
     };
   }, []);
 
+  sessionStorage.setItem("firstGametime", timeElapsed);
+
   return (
     <Container>
       <Front>{Math.floor(timeElapsed / 1000)}:</Front>

@@ -10,10 +10,26 @@
 .firstGameTitle{
     text-align: center;
     margin-bottom: 50px;
-    font-weight: 900;
-    font-size: 30px;
-    border: 3px solid black;
-    background: whitesmoke;
-    border-radius: 20px;
+    margin-left: 10px;
+}
+.blood{
+    width: 26px;
+    height: 14px;
+    margin-left: 35px;
+}
+.BoardTitle{
+    display: flex;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+}
+
+.StartButton{
+    cursor: pointer;
+    position: absolute;
+    top: -300px;
+    right: -185px;
+}
+.startButtonContainer{
+    position: relative;
 }
 
