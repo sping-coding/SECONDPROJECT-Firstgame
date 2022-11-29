@@ -18,6 +18,12 @@ function Timer() {
 
   sessionStorage.setItem("firstGametime", timeElapsed);
 
+  if (sessionStorage.getItem("game") === "Success") {
+    console.log("오는지 확인 => " + sessionStorage.getItem("game"));
+    var time = sessionStorage.getItem("firstGametime");
+    console.log("타임 확인 => " + time);
+  }
+
   return (
     <Container>
       <Front>{Math.floor(timeElapsed / 1000)}:</Front>

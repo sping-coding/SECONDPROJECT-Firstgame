@@ -4,6 +4,7 @@ import Board from "./Board";
 import Timer from "./Timer";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import StartButton from "./StartButton.png";
+import FinishButton from "./finishBtn.png";
 
 import "./OneToFifty.css";
 
@@ -18,12 +19,14 @@ function OneToFifty() {
   const [current, setCurrent] = useState(1);
   const [trys, setTrys] = useState(0);
   const [gameCount, setGameCount] = useState(1);
+  const [gameFinish, setGameFinish] = useState(false);
 
   const handleClick = (num) => {
     setTrys(trys + 1);
     if (num === current && gameFlag) {
       if (num === 25) {
         console.log("Success");
+        setGameFinish(true);
         endGame();
       }
       const index = numbers.indexOf(num);
@@ -44,8 +47,9 @@ function OneToFifty() {
       setCurrent(1);
       setGameFlag(true);
     } else {
+      var test = sessionStorage.getItem("firstGametime");
+      console.log("다시 test => " + test);
       navigate("/test");
-      sessionStorage.setItem("firstGametimeclick", trys);
     }
   };
 
@@ -69,11 +73,19 @@ function OneToFifty() {
           </div>
         ) : (
           <div className="startButtonContainer">
-            <img
-              src={StartButton}
-              onClick={startGame}
-              className="StartButton"
-            />
+            {gameFinish ? (
+              <img
+                src={FinishButton}
+                onClick={startGame}
+                className="StartButton"
+              />
+            ) : (
+              <img
+                src={StartButton}
+                onClick={startGame}
+                className="StartButton"
+              />
+            )}
           </div>
         )}
       </Container>
